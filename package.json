@@ -1,6 +1,6 @@
 {
   "name": "gulpify",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Web development pipeline using Gulp and several other technologies.",
   "main": "gulpfile.js",
   "scripts": {
@@ -9,10 +9,22 @@
   "keywords": [
     "gulp",
     "pug",
+    "yaml",
     "sass",
     "babel",
     "webpack"
   ],
   "author": "Michael Arakilian",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "gulp": "^4.0.2",
+    "gulp-beautify": "^3.0.0",
+    "gulp-data": "^1.3.1",
+    "gulp-if": "^3.0.0",
+    "gulp-pug": "^4.0.1",
+    "js-yaml": "^3.13.1",
+    "mkdirp": "^0.5.1",
+    "yargs": "^14.0.0"
+  }
 }

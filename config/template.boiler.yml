@@ -1,0 +1,17 @@
+meta:
+  lang: en
+  charset: UTF-8
+  title: Michael Arakilian
+  description: Page description
+  keywords: comma, seperated, keywords
+  author: Michael Arakilian
+assets:
+  favicon:
+    f16: path/to/favicon/16
+    f32: path/to/favicon/32
+    appletouch: path/to/favicon/appletouch
+    manifest: path/to/favicon/manifest
+  stylesheets:
+  - path/to/file/css
+  scripts:
+  - path/to/file/js
