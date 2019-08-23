@@ -1,0 +1,19 @@
+meta(charset=meta.charset)
+meta(name="viewport" content="width=device-width, initial-scale=1.0")
+meta(http-equiv="X-UA-Compatible" content="ie=edge")
+
+title=meta.title
+meta(name="description" content=meta.description)
+meta(name="keywords" content=meta.keywords)
+meta(name="author" content=meta.author)
+
+link(rel="apple-touch-icon" sizes="180x180" href=assets.favicon.appletouch)
+link(rel="icon" type="image/png" sizes="32x32" href=assets.favicon.f32)
+link(rel="icon" type="image/png" sizes="16x16" href=assets.favicon.f16)
+link(rel="manifest" href=assets.favicon.manifest)
+
+each stylesheet in assets.stylesheets
+	link(rel="stylesheet" href=stylesheet)
+
+each script in assets.scripts
+	script(defer src=script)

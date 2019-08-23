@@ -42,39 +42,49 @@ module.exports = function() {
 						}
 					}
 					else {
+						let templateBoiler = yaml.load(fs.readFileSync(path.resolve(paths.source.data.boiler), 'utf8'));
+						if(templateBoiler) {
+							if(view.includes('/')) {
+								let pathToView = view.split('/');pathToView.pop();pathToView = path.join(...pathToView);
+								print(`\n  warning: ${chalk.bold(view+'.yml')} file is empty ${chalk.gray('(building without data)')}\n`);
+								gulp.src(`${paths.source.main}/${view}.pug`)
+									.pipe(gulpif(templateBoiler, data(function(file) { return templateBoiler })))
+									.pipe(pug())
+									.pipe(gulpif(!yargs.prod, beautify.html()))
+									.pipe(gulp.dest(`${paths.build.main}/${pathToView}`));
+							}
+							else {
+								print(`\n  warning: ${chalk.bold(view+'.yml')} file is empty ${chalk.gray('(building without data)')}\n`);
+								gulp.src(`${paths.source.main}/${view}.pug`)
+									.pipe(gulpif(templateBoiler, data(function(file) { return templateBoiler })))
+									.pipe(pug())
+									.pipe(gulpif(!yargs.prod, beautify.html()))
+									.pipe(gulp.dest(`${paths.build.main}/`));
+							}
+						}
+					}
+				}
+				catch(error) {
+					let templateBoiler = yaml.load(fs.readFileSync(path.resolve(paths.source.data.boiler), 'utf8'));
+					if(templateBoiler) {
 						if(view.includes('/')) {
 							let pathToView = view.split('/');pathToView.pop();pathToView = path.join(...pathToView);
-							print(`\n  warning: ${chalk.bold(view+'.yml')} file is empty ${chalk.gray('(building without data)')}\n`);
+							print(`\n  warning: ${chalk.bold(view+'.pug')} has no data file ${chalk.gray('(building without data)')}\n`);
 							gulp.src(`${paths.source.main}/${view}.pug`)
+								.pipe(gulpif(templateBoiler, data(function(file) { return templateBoiler })))
 								.pipe(pug())
 								.pipe(gulpif(!yargs.prod, beautify.html()))
 								.pipe(gulp.dest(`${paths.build.main}/${pathToView}`));
 						}
 						else {
-							print(`\n  warning: ${chalk.bold(view+'.yml')} file is empty ${chalk.gray('(building without data)')}\n`);
+							print(`\n  warning: ${chalk.bold(view+'.pug')} has no data file ${chalk.gray('(building without data)')}\n`);
 							gulp.src(`${paths.source.main}/${view}.pug`)
+								.pipe(gulpif(templateBoiler, data(function(file) { return templateBoiler })))
 								.pipe(pug())
 								.pipe(gulpif(!yargs.prod, beautify.html()))
 								.pipe(gulp.dest(`${paths.build.main}/`));
 						}
 					}
-				}
-				catch(error) {
-						if(view.includes('/')) {
-							let pathToView = view.split('/');pathToView.pop();pathToView = path.join(...pathToView);
-							print(`\n  warning: ${chalk.bold(view+'.pug')} has no data file ${chalk.gray('(building without data)')}\n`);
-							gulp.src(`${paths.source.main}/${view}.pug`)
-								.pipe(pug())
-								.pipe(gulpif(!yargs.prod, beautify.html()))
-								.pipe(gulp.dest(`${paths.build.main}/${pathToView}`));
-						}
-						else {
-							print(`\n  warning: ${chalk.bold(view+'.pug')} has no data file ${chalk.gray('(building without data)')}\n`);
-							gulp.src(`${paths.source.main}/${view}.pug`)
-								.pipe(pug())
-								.pipe(gulpif(!yargs.prod, beautify.html()))
-								.pipe(gulp.dest(`${paths.build.main}/`));
-						}
 				}
 			});
 		}

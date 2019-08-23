@@ -13,7 +13,7 @@ module.exports = function(type, yarg) {
 			if (err) throw err;
 		});
 		mkdirp(path.resolve(paths.source.main), function (err) {
-			fs.writeFile(path.resolve(paths.source.main, `${yarg}.pug`), /*'extends assets/components/template.pug\nblock body'*/'', { flag: 'wx' }, function (err) {
+			fs.writeFile(path.resolve(paths.source.main, `${yarg}.pug`), 'extends assets/components/template.pug\nblock body', { flag: 'wx' }, function (err) {
 				if (err) throw err;
 			});
 		});
@@ -55,7 +55,7 @@ module.exports = function(type, yarg) {
 
 		mkdirp(path.resolve(paths.source.main, viewPath), function (err) {
 			if (err) return cb(err);
-			fs.writeFile(path.resolve(paths.source.main, viewPath, `${filename}.pug`), /*`extends ${level}assets/components/template.pug\nblock body`*/'', { flag: 'wx' }, function (err) {
+			fs.writeFile(path.resolve(paths.source.main, viewPath, `${filename}.pug`), `extends ${level}assets/components/template.pug\nblock body`, { flag: 'wx' }, function (err) {
 				if (err) throw err;
 			});
 		});

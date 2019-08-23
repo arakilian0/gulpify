@@ -1,9 +1,9 @@
 meta:
   lang: en
   charset: UTF-8
-  title: Michael Arakilian
-  description: Page description
-  keywords: comma, seperated, keywords
+  title: Page Title
+  description: Page Description
+  keywords: Page, Keywords
   author: Michael Arakilian
 assets:
   favicon:
