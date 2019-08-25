@@ -1,3 +1,3 @@
 module.exports = {
-	"_": "coming soon"
+	server: require('./browser-sync')
 };
