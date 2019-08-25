@@ -1,6 +1,6 @@
 # gulpify
 
-:zap: ***The full-stack [Gulp.js](https://gulpjs.com/) boilerplate.***
+:zap: ***The full-stack Gulp.js boilerplate.***
 
 [![Build Status](https://travis-ci.com/arakilian0/gulpify.svg?branch=master)](https://travis-ci.com/arakilian0/gulpify) [![GitHub release](https://img.shields.io/github/release/arakilian0/gulpify.svg)](https://github.com/arakilian0/gulpify/releases/) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/arakilian0/gulpify/blob/master/LICENSE.md) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](https://github.com/arakilian0/gulpify/blob/master/CONTRIBUTING.md)
 
@@ -29,7 +29,7 @@ $ gulpify init my-project
 ```
 
 ## Usage
-***Note: This project uses Gulp.js*** (an amazingly powerful node.js based task runner). ***If you are not familiar with gulp, I would definitely suggest checking out the [docs](https://gulpjs.com/docs/en/getting-started/javascript-and-gulpfiles) for a mind blowing experience :open_mouth: . Nevertheless, this project can definitely be used without any gulp knowledge.***
+***Note: This project uses [Gulp.js](https://gulpjs.com/)*** (an amazingly powerful node.js based task runner). ***If you are not familiar with gulp, I would definitely suggest checking out the [docs](https://gulpjs.com/docs/en/getting-started/javascript-and-gulpfiles) for a mind blowing experience :open_mouth: . Nevertheless, this project can definitely be used without any gulp knowledge.***
 
 #### Help
 
@@ -42,7 +42,9 @@ $ gulp
 To get help text for specific tasks run:
 
 ```
-$ gulp <task>
+$ gulp create
+$ gulp build
+...
 ```
 
 No need for any `--help` flags. In fact, if you run `gulp --help`, gulp-cli help text gets printed to the console. All [gulp-cli](https://npmjs.com/package/gulp-cli) commands and flags are available to use as normal.
@@ -59,8 +61,10 @@ Regarding this project, a **view** is simply a Pug file that has a corresponding
 $ gulp create --view index
 ```
 
-Several things just happened
+Several things just happened:
 
+- *First of all you should've got an error because index already exists (all filenames must be unique just like a normal directory) so use a different filename and continue - keep in mind all views get built to HTML in the end and they keep the same name*
+- *If all is well the following happens:*
 - *the view was registered to ```config/template.yml```*
 - *2 files are created: ```index.pug``` and ```index.yml```*
 - *Pug files get created in ```src/```*
@@ -95,6 +99,7 @@ $ gulp build --views
 
 - Builds all views listed in ```config/template.yml```
 - Produces the HTML files in ```dist/```
+- Prints status messages for each view during build process (currently working on a logger feature to log messages to Markdown files)
 
 *Caveat:*
 Only the views registered in ```config/template.yml``` get compiled. If you manually created a view, make sure to register it!
@@ -130,7 +135,7 @@ $ gulp runserver -p dist/docs -o --4200 -d
 $ gulp runserver -d
 ```
 
-*Note: more tasks/options coming soon...*
+*Note: More tasks and options coming soon.* :coffee:
 
 ## License
 
