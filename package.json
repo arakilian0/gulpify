@@ -1,6 +1,6 @@
 {
   "name": "gulpify",
-  "version": "0.2.1",
+  "version": "0.4.1",
   "description": "Web development pipeline using Gulp and several other technologies.",
   "main": "gulpfile.js",
   "scripts": {
