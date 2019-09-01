@@ -1,0 +1,23 @@
+# development options
+dev:
+  mode: development
+  output:
+    filename: all.js
+  module:
+    rules:
+    - test: /\.m?js$/
+      exclude: /(node_modules|bower_components)/
+      use:
+        loader: babel-loader
+
+# production options
+prod:
+  mode: production
+  output:
+    filename: all.min.js
+  module:
+    rules:
+    - test: /\.m?js$/
+      exclude: /(node_modules|bower_components)/
+      use:
+        loader: babel-loader

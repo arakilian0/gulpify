@@ -1,0 +1,14 @@
+main: ./src
+
+styles:
+  main: ./src/assets/styles/main.sass
+  views: ./src/assets/styles/views
+
+scripts:
+  main: ./src/assets/scripts/main.js
+  views: ./src/assets/scripts/views
+
+data:
+  main: ./config/template.yml
+  boiler: ./config/template.boiler.yml
+  views: ./src/assets/data

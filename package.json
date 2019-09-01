@@ -14,19 +14,33 @@
     "babel",
     "webpack"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arakilian0/gulpify.git"
+  },
+  "homepage": "https://github.com/arakilian0/gulpify#readme",
+  "bugs": {
+    "url": "https://github.com/arakilian0/gulpify/issues"
+  },
   "author": "Michael Arakilian",
   "license": "MIT",
   "dependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-export-default-from": "^7.5.2",
+    "@babel/preset-env": "^7.5.5",
+    "babel-loader": "^8.0.6",
     "browser-sync": "^2.26.7",
     "chalk": "^2.4.2",
     "gulp": "^4.0.2",
     "gulp-beautify": "^3.0.0",
-    "gulp-cli": "^2.2.0",
     "gulp-data": "^1.3.1",
     "gulp-if": "^3.0.0",
     "gulp-pug": "^4.0.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
     "js-yaml": "^3.13.1",
     "mkdirp": "^0.5.1",
+    "webpack-stream": "^5.2.1",
     "yargs": "^14.0.0"
   }
 }

@@ -22,7 +22,7 @@ $ npm -v
 
 ## Installation
 
-I've created a [Command Line Interface](https://github.com/arakilian0/gulpify-cli) which instantiates a new copy and installs all depenendecies of this repository. Once installed you can run:
+I've created a [Command Line Interface](https://github.com/arakilian0/gulpify-cli) which downloads the latest version, and installs all depenendecies of this repository. Once installed you can run:
 
 ```
 $ gulpify init my-project
@@ -63,10 +63,10 @@ $ gulp create --view index
 
 Several things just happened:
 
-- *First of all you should've got an error because index already exists (all filenames must be unique just like a normal directory) so use a different filename and continue - keep in mind all views get built to HTML in the end and they keep the same name*
+- *First of all you should've got an error because the index view is already created for you (all filenames must be unique just like a normal directory) so use a different filename and continue - keep in mind all views get built to HTML in the end and they keep the same name*
 - *If all is well the following happens:*
 - *the view was registered to ```config/template.yml```*
-- *2 files are created: ```index.pug``` and ```index.yml```*
+- *2 files are created: ```example.pug``` and ```example.yml```*
 - *Pug files get created in ```src/```*
   - *extends from ```src/assets/components/template.pug```*
 - *YAML files get created in ```src/assets/data```*

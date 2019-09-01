@@ -1,0 +1,11 @@
+main: ./dist
+
+components: ./src/assets/components
+
+styles:
+  main: ./dist/assets/styles
+  views: ./dist/assets/styles/views
+
+scripts:
+  main: ./dist/assets/scripts
+  views: ./dist/assets/scripts/views

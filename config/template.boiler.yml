@@ -12,6 +12,6 @@ assets:
     appletouch: path/to/favicon/appletouch
     manifest: path/to/favicon/manifest
   stylesheets:
-  - path/to/file/css
+  - assets/styles/all.css
   scripts:
-  - path/to/file/js
+  - assets/scripts/all.js

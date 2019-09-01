@@ -17,16 +17,22 @@ module.exports = function(type, yarg) {
 				if (err) throw err;
 			});
 		});
-		// mkdirp(path.resolve(paths.source.script.views), function (err) {
-		// 	fs.writeFile(path.resolve(paths.source.script.views, `${yarg}.js`), '', { flag: 'wx' }, function (err) {
-		// 		if (err) throw err;
-		// 	});
-		// });
-		// mkdirp(path.resolve(paths.source.style.views), function (err) {
-		// 	fs.writeFile(path.resolve(paths.source.style.views, `${yarg}.scss`), '', { flag: 'wx' }, function (err) {
-		// 		if (err) throw err;
-		// 	});
-		// });
+		mkdirp(path.resolve(paths.source.scripts.views), function (err) {
+			fs.writeFile(path.resolve(paths.source.scripts.views, `${yarg}.js`), '', { flag: 'wx' }, function (err) {
+				if (err) throw err;
+			});
+		});
+		fs.appendFile(path.join(path.resolve(), paths.source.scripts.main), `import './views/${yarg}'; \n`, function (err) {
+			if (err) throw err;
+		});
+		mkdirp(path.resolve(paths.source.styles.views), function (err) {
+			fs.writeFile(path.resolve(paths.source.styles.views, `${yarg}.sass`), '', { flag: 'wx' }, function (err) {
+				if (err) throw err;
+			});
+		});
+		fs.appendFile(path.join(path.resolve(), paths.source.styles.main), `@import views/${yarg} \n`, function (err) {
+			if (err) throw err;
+		});
 		mkdirp(path.resolve(paths.source.data.views), function (err) {
 			fs.writeFile(path.resolve(paths.source.data.views, `${yarg}.yml`), '', { flag: 'wx' }, function (err) {
 				if (err) throw err;
@@ -59,18 +65,24 @@ module.exports = function(type, yarg) {
 				if (err) throw err;
 			});
 		});
-		// mkdirp(path.resolve(paths.source.style.views, viewPath), function (err) {
-		// 	if (err) return cb(err);
-		// 	fs.writeFile(path.resolve(paths.source.style.views, viewPath, `${filename}.scss`), '', { flag: 'wx' }, function (err) {
-		// 		if (err) throw err;
-		// 	});
-		// });
-		// mkdirp(path.resolve(paths.source.script.views, viewPath), function (err) {
-		// 	if (err) return cb(err);
-		// 	fs.writeFile(path.resolve(paths.source.script.views, viewPath, `${filename}.js`), '', { flag: 'wx' }, function (err) {
-		// 		if (err) throw err;
-		// 	});
-		// });
+		mkdirp(path.resolve(paths.source.styles.views, viewPath), function (err) {
+			if (err) return cb(err);
+			fs.writeFile(path.resolve(paths.source.styles.views, viewPath, `${filename}.sass`), '', { flag: 'wx' }, function (err) {
+				if (err) throw err;
+			});
+		});
+		fs.appendFile(path.resolve(paths.source.styles.main), `@import views/${viewPath}/${filename} \n`, function (err) {
+			if (err) throw err;
+		});
+		mkdirp(path.resolve(paths.source.scripts.views, viewPath), function (err) {
+			if (err) return cb(err);
+			fs.writeFile(path.resolve(paths.source.scripts.views, viewPath, `${filename}.js`), '', { flag: 'wx' }, function (err) {
+				if (err) throw err;
+			});
+		});
+		fs.appendFile(path.resolve(paths.source.scripts.main), `import './views/${viewPath}/${filename}'; \n`, function (err) {
+			if (err) throw err;
+		});
 		mkdirp(path.resolve(paths.source.data.views, viewPath), function (err) {
 			if (err) return cb(err);
 			fs.writeFile(path.resolve(paths.source.data.views, viewPath, `${filename}.yml`), '', { flag: 'wx' }, function (err) {

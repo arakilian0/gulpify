@@ -1,0 +1,17 @@
+# path
+server: ./dist
+
+# launch
+open: false
+notify: false
+
+# development
+logPrefix: gulpify
+logLevel: debug
+logFileChanges: true
+logConnections: true
+
+# port
+port: 8000
+ui:
+  port: 8080

@@ -1,0 +1,14 @@
+# .sass or .scss
+extension: .sass
+
+# development
+dev:
+  options:
+    outputStyle: expanded
+  output: all.css
+
+# production
+prod:
+  options:
+    outputStyle: compressed
+  output: all.min.css
