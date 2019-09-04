@@ -1,68 +1,9 @@
-let child_process = require('child_process');
-let options = require('./../../options/_options');
-let paths = require('./../../paths/_paths');
 let yargs = require('yargs').argv;
-let print = console.log;
-let chalk = require('chalk');
 
-module.exports = function(cb) {
+module.exports = function (cb) {
+	if(!yargs.default && !yargs.d && !yargs.D && !yargs.clearCache && !yargs.c && !yargs.C) { require('./msg/help')() };
 
-	if(yargs.clearCache) {
-		let promise = new Promise(function(resolve, reject) {
-			child_process.exec(
-				`cd ${paths.build.main} && aws s3 sync ./ s3://${options.deployment.bucket}/ --delete`,
-				{},
-				function(error, stdout, stderr) {
-					process.stdout.write(stdout + '\n');
-					process.stderr.write(stderr + '\n');
-					if (error !== null) {
-						if (callback) callback(error);
-						reject();
-					}
-					else {
-						print(`  ${chalk.green('success:')} uploaded all ${chalk.bold(paths.build.main)} content to ${chalk.bold(`s3://${options.deployment.bucket}`)}\n`);
-						resolve();
-					}
-			});
-		});
-
-		promise.
-			then(function () {
-				child_process.exec(
-					`aws cloudfront create-invalidation --distribution-id ${options.deployment.distribution} --paths '/*'`,
-					{},
-					function(error, stdout, stderr) {
-						process.stdout.write(stdout + '\n');
-						process.stderr.write(stderr + '\n');
-						if (error !== null) {
-							if (callback) callback(error);
-						}
-				});
-			}).
-			catch(function () {
-					console.log('Some error has occured');
-		});
-	}
-
-	else {
-		child_process.exec(
-			`cd ${paths.build.main} && aws s3 sync ./ s3://${options.deployment.bucket}/ --delete`,
-			{},
-			function(error, stdout, stderr) {
-				process.stdout.write(stdout + '\n');
-				process.stderr.write(stderr + '\n');
-				if (error !== null) {
-					if (callback) callback(error);
-					reject();
-				}
-				else {
-					print(`  ${chalk.green('success:')} uploaded all ${chalk.bold(paths.build.main)} content to ${chalk.bold(`s3://${options.deployment.bucket}`)}\n`);
-					print(`  ${chalk.yellow('warning:')} cloudfront distribution is still serving old content`);
-					print(`  ${chalk.gray('run \'gulp deploy --clear-cache\' to invalidate global caches')}\n`);
-					resolve();
-				}
-		});
-	}
-
-	cb();
+	if(yargs.default || yargs.d || yargs.D) { require('./options/default')() };
+	if(yargs.clearCache || yargs.c || yargs.C) { require('./options/clearCache')() };
+  cb();
 };
