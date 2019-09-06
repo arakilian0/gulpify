@@ -8,6 +8,12 @@ scripts:
   main: ./src/assets/scripts/main.js
   views: ./src/assets/scripts/views
 
+icons: ./src/assets/icons/**/**/**/**/**/*.svg
+
+fonts:
+  webfonts: ./src/assets/fonts/webfonts
+  iconfonts: ./src/assets/fonts/iconfonts
+
 data:
   main: ./config/template.yml
   boiler: ./config/template.boiler.yml

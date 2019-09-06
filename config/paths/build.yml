@@ -9,3 +9,7 @@ styles:
 scripts:
   main: ./dist/assets/scripts
   views: ./dist/assets/scripts/views
+
+fonts:
+  webfonts: ./dist/assets/fonts/webfonts
+  iconfonts: ./dist/assets/fonts/iconfonts

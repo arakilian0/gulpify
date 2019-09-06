@@ -1,0 +1,16 @@
+font:
+  fontName: icon
+  formats:
+  - ttf
+  - eot
+  - woff
+  - woff2
+  - svg
+  normalize: true
+  fontHeight: 1001
+
+css:
+  fontName: icon
+  path: ./src/assets/styles/config/_icontemplate.sass
+  targetPath: ../../styles/lib/icons.sass
+  fontPath: ../fonts/iconfonts/
